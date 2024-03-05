@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  const data = [
+      const data = [
     {
         "question": "Which of the following statements related to cloud hosting and private hosting is FALSE?",
         "options": [
@@ -622,6 +622,63 @@ document.addEventListener('DOMContentLoaded', function() {
             "4 stories",
             "At most 22 user stories"
           ],
-          "correctAnswer": "At most 22 user stories"}];
+          "correctAnswer": "At most 22 user stories"
         }
+      ]
+
+      let currentQuestionindex = 0
+      let score = 0
+      let prevScore = 0
+      let letterCount = 0
+      const letters = ["A","B","C","D","E"]
+      function displayQuestion() {
+        if (currentQuestionindex >= 5){
+          document.getElementById('header').style.display = 'none'
+          document.getElementById('answers').style.display = 'none'
+          document.getElementById('results').style.display = 'block'
+          document.getElementById('score').textContent = `your score is ${score} out of ${data.length}`
+          if (prevScore != 0) document.getElementById('prev_score').textContent = `your previous score was ${prevScore} out of ${data.length}`
+          document.getElementById('restart_button').style.display = 'block'
+          return
+        }
+        const question = data[currentQuestionindex]
+        document.getElementById("header").textContent = question.question
+        const answers = document.getElementById("answers")
+        answers.innerHTML = ''
+
+        question.options.forEach(function(option) {
+          const button = document.createElement('button')
+          button.style.fontSize = "20px"
+          button.style.padding = "20px"
+          button.style.textAlign = "left"
+          button.innerText = letters[letterCount] +". "+ option
+          letterCount++
+          button.addEventListener('click', function() {
+            if (option == question.correctAnswer) {
+              score++
+            }
+            currentQuestionindex++
+            displayQuestion()
+          })
+          answers.appendChild(button)
+        })
+        letterCount = 0
+      }
+  const restartButton = document.getElementById('restart_button')
+  restartButton.addEventListener('click', function() {
+    currentQuestionindex = 0
+    prevScore = score
+    score = 0
+    document.getElementById('header').style.display = 'block'
+    document.getElementById('answers').style.display = 'flex'
+    document.getElementById('results').style.display = 'none'
+    document.getElementById('restart_button').style.display = 'none'
+    
+    displayQuestion()
+  })
+  displayQuestion()
+})
+
+        
+        
 

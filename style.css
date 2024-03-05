@@ -8,11 +8,14 @@ body {
     margin: 0%;
     padding-bottom: 5%;
 }
-h1 header {
+#header {
     margin-top: 0%;
     width: 100%;
     height: fit-content;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
 }
+
 #answers {
     width: 90%;
     height: 80%;
@@ -30,7 +33,15 @@ h1 header {
     background-color: #f0f0f0;
     border: 1px solid #d1d1d1;
     border-radius: 5px;
+    
+    
   }
   .button:hover {
     background-color: #e2e2e2;
   }
+#results{
+    display: none;
+}
+#restart_button{
+    display: none;
+}
