@@ -632,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let letterCount = 0
       const letters = ["A","B","C","D","E"]
       function displayQuestion() {
-        if (currentQuestionindex >= 5){
+        if (currentQuestionindex >= data.length){
           document.getElementById('header').style.display = 'none'
           document.getElementById('answers').style.display = 'none'
           document.getElementById('results').style.display = 'block'
